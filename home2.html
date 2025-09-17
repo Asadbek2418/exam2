@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.css" rel="stylesheet" />
+
+    <script>
+        if (
+            localStorage.getItem("color-theme") === "dark" ||
+            (!("color-theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    </script>
+</head>
+
+<body class="bg-white dark:bg-gray-900">
+
+
+    <header
+        class="bg-[#BB2339] border-gray-200 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b dark:border-gray-600">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+            <a href="./index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><img
+                        src="./images/logo.png" alt=""></span>
+            </a>
+
+
+            <div class="flex items-center md:space-x-6 md:order-2">
+
+
+                <div class="hidden md:flex items-center space-x-6 gap-[40px]">
+                    <a href="./home2.html" class="text-white dark:text-white hover:text-blue-600">Menu</a>
+                    <a href="./news.html" class="text-white dark:text-white hover:text-blue-600">News</a>
+                    <a href="./about.html" class="text-white dark:text-white hover:text-blue-600">About Us </a>
+                    <a href="./contact.html" class="text-white dark:text-white hover:text-blue-600">Contact Us</a>
+                    <a href="#" class="text-white dark:text-white hover:text-blue-600"><button
+                            class="w-[131px] h-[48px] border border-white rounded-[100px] ">Log in</button></a>
+                </div>
+
+
+                <button id="theme-toggle" type="button"
+                    class="ml-4 text-gray-500 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5">
+                    <span id="theme-toggle-dark-text" class="hidden w-[40px]">🌑</span>
+                    <span id="theme-toggle-light-text" class="hidden"> 🌞</span>
+                </button>
+
+
+                <button data-collapse-toggle="navbar-sticky" type="button" id="menu-btn"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        <div id="mobile-menu" class="hidden md:hidden bg-[#BB2339]-50 dark:bg-gray-800 px-4 py-3 space-y-2">
+            <a href="#" class="block text-gray-900 dark:text-white hover:text-blue-600">Menu</a>
+            <a href="#" class="block text-gray-900 dark:text-white hover:text-blue-600">News</a>
+            <a href="#" class="block text-gray-900 dark:text-white hover:text-blue-600">About Us</a>
+            <a href="#" class="block text-gray-900 dark:text-white hover:text-blue-600">Contact Us</a>
+
+        </div>
+    </header>
+<div class="container mx-auto pb-[100px] pt-[200px] px-4">
+    <div class="grid grid-cols-12 gap-8">
+
+        <!-- Sidebar Tabs -->
+        <aside class="col-span-12 md:col-span-3">
+            <div class="bg-[#BB2339] dark:bg-red-700 text-white rounded-2xl p-6 shadow-lg">
+                <h3 class="text-2xl font-bold mb-6">Our Regular Menu Pack</h3>
+
+                <ul class="space-y-3" role="tablist" data-tabs-toggle="#menu-tabs" aria-label="Tabs">
+                    <li><button id="tab-all" data-tabs-target="#all" type="button" role="tab" aria-controls="all"
+                            aria-selected="true"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">All</button>
+                    </li>
+
+                    <li><button id="tab-kebabs" data-tabs-target="#kebabs" type="button" role="tab"
+                            aria-controls="kebabs"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">Kebabs</button>
+                    </li>
+
+                    <li><button id="tab-pizza" data-tabs-target="#pizza" type="button" role="tab" aria-controls="pizza"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">Pizzas</button>
+                    </li>
+
+                    <li><button id="tab-burgers" data-tabs-target="#burgers" type="button" role="tab"
+                            aria-controls="burgers"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">Burgers</button>
+                    </li>
+
+                    <li><button id="tab-other" data-tabs-target="#other" type="button" role="tab" aria-controls="other"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">Other
+                            Dishes</button></li>
+
+                    <li><button id="tab-sides" data-tabs-target="#sides" type="button" role="tab" aria-controls="sides"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">Sides</button>
+                    </li>
+
+                    <li><button id="tab-drinks" data-tabs-target="#drinks" type="button" role="tab"
+                            aria-controls="drinks"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">Drinks</button>
+                    </li>
+
+                    <li><button id="tab-desserts" data-tabs-target="#desserts" type="button" role="tab"
+                            aria-controls="desserts"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">Desserts</button>
+                    </li>
+
+                    <li><button id="tab-deals" data-tabs-target="#deals" type="button" role="tab" aria-controls="deals"
+                            class="w-full px-4 py-2 text-sm rounded-full border border-white text-white hover:bg-white hover:text-red-600 transition">Meal
+                            Deals</button></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Content -->
+        <main class="col-span-12 md:col-span-9">
+            <div id="menu-tabs" class="space-y-8">
+
+                <!-- All -->
+                <div id="all" role="tabpanel" aria-labelledby="tab-all"
+                    class="grid grid-cols-1 justify-items-center sm:grid-cols-2 lg:grid-cols-2 gap-[30px] ">
+                    
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/shashlik2.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/shashlik.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/lavash.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/turk2.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/tavax.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/juft.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/shashlik01.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/lavash.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/hoddok.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+                    <div class="bg-white max-w-[400px] dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img class=" w-[340px] w-[100%]" src="./images/shashlik2.png" class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold dark:text-white text-center">Barbecue Shish kebab Shashlik Skewer</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$12.00</p>
+                    </div>
+
+                </div>
+
+                <!-- Kebabs -->
+                <div id="kebabs" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img src="./images/shashlik01.png"
+                            class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold text-center">Chicken Kebab</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$11.00</p>
+                    </div>
+                </div>
+
+                <!-- Pizza -->
+                <div id="pizza" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img src="./images/pizza.png"
+                            class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold text-center">Pepperoni Pizza</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$13.00</p>
+                    </div>
+                </div>
+
+                
+                <div id="burgers" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img src="./images/burger.png"
+                            class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold text-center">Cheese Burger</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$10.50</p>
+                    </div>
+                </div>
+
+                
+                <div id="other" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img src="./images/tavax.png"
+                            class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold text-center">Grilled Steak</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$20.00</p>
+                    </div>
+                </div>
+
+                
+                <div id="sides" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img src="./images/juft.png"
+                            class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold text-center">French Fries</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$20.00</p>
+                    </div>
+                </div>
+
+                
+                <div id="drinks" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img src="./images/turk.png"
+                            class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold text-center">Turkiski kabab</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$20.50</p>
+                    </div>
+                </div>
+
+                
+                <div id="desserts" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img src="./images/hoddok.png"
+                            class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold text-center">Ice Cream</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$5.00</p>
+                    </div>
+                </div>
+
+                
+                <div id="deals" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 hover:shadow-xl transition">
+                        <img src="./images/lavash.png"
+                            class="w-full h-40 object-cover rounded-lg" />
+                        <h4 class="mt-3 text-lg font-semibold text-center">Family Meal Deal</h4>
+                        <p class="mt-2 text-center text-red-600 font-bold">$35.00</p>
+                    </div>
+                </div>
+
+            </div>
+            
+        </main>
+       
+    </div>
+</div>
+<section class="pt-[150px] bg-[#F4F4F4] dark:bg-gray-900 pb-[100px]">
+    <div class="container mx-auto">
+        <div
+            class="grid grid-cols-1 justify-items-center items-center gap-[30px] xl:grid xl:grid-cols-4 lg:grid lg:grid-cols-3 md:grid md:grid-cols-3 sm:grid sm:grid-cols-2">
+            <div>
+                <h3 class="text-[23px] dark:text-white font-bold">instagram</h3>
+                <h1 class="text-[48px] font-medium mt-[30px]  dark:text-white ">Photo Gallery</h1>
+                <p class="text-[#AAAAAA] mt-[30px]  dark:text-white ">Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. <br> Volutpat mattis ipsum turpis elit elit scelerisque egestas mu.</p>
+                <button
+                    class=" dark:text-white w-[149px] h-[44px] mt-[30px] border border-[#BB2339] rounded-[100px] ">View
+                    Mode </button>
+            </div>
+            <div class="relative group w-[300px] h-[447px] rounded-lg overflow-hidden shadow-lg">
+                <img src="./images/tuxum.png" alt="Food" class="w-full h-full object-cover">
+
+
+                <a href="https://www.instagram.com">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"
+                            class="w-12 h-12">
+                    </div>
+                </a>
+            </div>
+            <div class="relative group  w-[300px] h-[447px] rounded-lg overflow-hidden shadow-lg">
+                <img src="./images/tuxum2.png" alt="Food" class="w-full h-full object-cover">
+
+
+                <a href="https://www.instagram.com">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"
+                            class="w-12 h-12">
+                    </div>
+                </a>
+            </div>
+            <div class="relative group  w-[300px] h-[447px] rounded-lg overflow-hidden shadow-lg">
+                <img src="./images/tuxum2.png" alt="Food" class="w-full h-full object-cover">
+
+
+                <a href="https://www.instagram.com">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"
+                            class="w-12 h-12">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+  
+    <footer class="dark:bg-gray-900 relative top-[220px] z-19">
+        <div
+            class="container rounded-[20px] pb-[70px] pt-[50px] dark:bg-gray-900 mx-auto bg-[#BB2339] border border-[#FFFFFF66] text-center ">
+            <p class="font-bold text-white text-[23px] ">Newsletter</p>
+            <h1 class="font-medium text-white text-[48px] mt-[50px]">Subscribe to Our Newsletter</h1>
+            <p class="text-white font-medium mt-[50px]">And never miss latest Updates!</p>
+            <form>
+                <div class="flex mt-[50px]"><input
+                        class="p-[20px] block mx-auto w-[100%]  max-w-[635px] h-[52px] text-[#AAAAAA] border border-white rounded-[100px] bg-[#BB2339] "
+                        placeholder="Email Address" type="email">
+                    <button
+                        class="max-w-[144px] w-[100%] text-white rounded-[100px]  border border-white mr-[200px] h-[52px]">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </footer>
+    <footer class="pt-[300px] relative bg-[#BB2339] dark:bg-gray-900 pb-[200px]">
+        <div
+            class="container mx-auto justify-items-center gap-[40px] items-center grid grid-cols-1 xl:grid xl:grid-cols-3 lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 sm:grid sm:grid-cols-2 ">
+            <ul class="flex flex-col text-white gap-[20px]">
+                <li>
+                    <a class="text-[32px] font-medium " href="">Contact Us</a>
+                </li>
+
+
+                <li>
+                    <a href="">9 W 53rd St, London, NY 10019, UK</a>
+                </li>
+                <li>
+                    <a href="">+1 212-344-1230 <br>
+                        +1 212-555-1230</a>
+                </li>
+            </ul>
+            </ul>
+            <ul class="flex flex-col text-white gap-[20px]">
+                <li>
+                    <img src="./images/footer.png" alt="">
+                </li>
+                <li>
+                    <a href="">"The best way to find yourself is to lose yourself in the <br> service of others.”</a>
+                </li>
+                <li>
+                    <a href=""><img class="block mx-auto" src="./images/inss.png" alt=""></a>
+                </li>
+            </ul>
+            <ul class="flex flex-col pl-[70px] text-white gap-[20px]">
+                <li>
+                    <a class="text-[32px] font-medium" href="">Working Hours</a>
+
+                </li>
+                <li>
+                    <a href="">Monday-Friday: <br>
+                        08:00 am -12:00 am</a>
+                </li>
+                <li>
+                    <a href="">Saturday-Sunday: <br>
+                        07:00am -11:00 pm</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.js"></script>
+    <script>
+
+        var themeToggleBtn = document.getElementById("theme-toggle");
+        var darkText = document.getElementById("theme-toggle-dark-text");
+        var lightText = document.getElementById("theme-toggle-light-text");
+
+
+        if (document.documentElement.classList.contains("dark")) {
+            lightText.classList.remove("hidden");
+        } else {
+            darkText.classList.remove("hidden");
+        }
+
+        themeToggleBtn.addEventListener("click", function () {
+            darkText.classList.toggle("hidden");
+            lightText.classList.toggle("hidden");
+
+            if (document.documentElement.classList.contains("dark")) {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("color-theme", "light");
+            } else {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("color-theme", "dark");
+            }
+        });
+
+
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+
+</html>
